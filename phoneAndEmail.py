@@ -36,7 +36,7 @@ for groups in emailRegex.findall(text):
 
 
 
-#TODO: Copy results to the clipboard.
+#Copy results to the clipboard.
 if len(matches) > 0:
         pyperclip.copy('\n'.join(matches))
         print('Copied to clipboard:')
@@ -44,4 +44,3 @@ if len(matches) > 0:
 else:
         print("No phone numbers or email adderesses found.")
 
-        
