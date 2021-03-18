@@ -14,10 +14,10 @@ phoneRegex= re.compile(r'''(
 
 #Email regex
 emailRegex= re.compile(r'''(
-        ([a-zA-Z0-9._%+-]+)                   #username
+        [a-zA-Z0-9._%+-]+                     #username
         @                                     #@ sign
-        ([a-zA-Z0-9.-)                        #subdomain
-        (\.[a-zA-Z]{2,4})                    #top level domain
+        [a-zA-Z0-9.-]+                        #subdomain
+        (\.[a-zA-Z]{2,4})                     #top level domain
 )''',re.VERBOSE)
 
 
@@ -26,7 +26,7 @@ text= str(pyperclip.paste())
 
 matches = []
 for groups in phoneRegex.findall(text):
-        phoneNum +="-".join([groups[1],groups[3],groups[5]])
+        phoneNum = "-".join([groups[1],groups[3],groups[5]])
         if groups[8] != '':
                 phoneRegex+= ' x'+groups[8]
         matches.append(phoneNum)
@@ -40,7 +40,7 @@ for groups in emailRegex.findall(text):
 if len(matches) > 0:
         pyperclip.copy('\n'.join(matches))
         print('Copied to clipboard:')
-        print('\n'.join(matces))
+        print('\n'.join(matches))
 else:
         print("No phone numbers or email adderesses found.")
 
